@@ -13,14 +13,14 @@ export const userReducer = (state = initialState,action) => {
         return {
             ...state,
             user: action.payload,
-            loading: true,
+            loading: false,
             error: ''
         };
     case SET_REPOS:
         return {
             ...state,
             repos: action.payload,
-            loading: true,
+            loading: false,
             error: ''
         }; 
     case SET_LOADING:

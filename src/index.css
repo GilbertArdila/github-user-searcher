@@ -10,3 +10,7 @@ body{
   font-size: 1.6rem;
   font-family: monospace,sans-serif;
 }
+.App{
+  width: 100vw;
+  min-height:calc(100vh - 160px) ;
+}
