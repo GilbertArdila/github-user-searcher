@@ -2,7 +2,7 @@ import { getGitHubUser,getRepos } from "../services/getData";
 import {SET_USER,SET_REPOS,SET_LOADING,SET_ERROR} from '../types/types';
 
  
-export const setuser = (user) => async (dispatch) => {
+export const setUser = (user) => async (dispatch) => {
     dispatch({
         type: SET_LOADING
     });

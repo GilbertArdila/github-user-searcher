@@ -7,7 +7,7 @@ const initialState = {
     error: ''
 };
 
-export const userReducer = (state,action) => {
+export const userReducer = (state = initialState,action) => {
     switch(action.type){
     case SET_USER:
         return {
