@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { checkNull } from '../helpers/checkNull';
-import '../styles/index.css';
+import '../styles/userStyles.css';
 import { InfoContainer } from './InfoContainer';
 import { Image } from '../components';
 
@@ -11,7 +10,7 @@ const UserCart = () => {
     
 
     return (
-        <div className='UserCart'>
+        <section className='UserCart'>
            
             <Image 
             url={user.avatar_url}
@@ -19,7 +18,7 @@ const UserCart = () => {
             />
             <InfoContainer/>
 
-        </div>
+        </section>
     )
 }
 

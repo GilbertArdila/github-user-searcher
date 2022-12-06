@@ -1,0 +1,26 @@
+.UserSearcherContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.UserSearcherContainer__searcher{
+    display: flex;
+    width:100%;
+   
+    padding: 4px;
+    background-color: rgb(235, 226, 226);
+    margin: 20px auto;
+    border-radius: 4px;
+    outline: none;
+    border-color: unset;
+}
+.UserSearcherContainer__searcher:focus{
+  background-color: rgb(172, 167, 167);
+}
+.UserSearcherContainer__icon{
+  position: relative;
+  left:calc(-10%)
+}

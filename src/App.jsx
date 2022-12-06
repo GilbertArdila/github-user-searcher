@@ -1,6 +1,7 @@
 import {useEffect,useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import { setUser,setRepos} from './actions/actions';
+import { UserSearcher } from './components';
 import { ReposCart } from './containers/ReposCart';
 import {UserCart} from './containers/UserCart';
 
@@ -37,18 +38,17 @@ function App() {
     }
   };
   
- console.log(user)
- console.log(repos)
+
 
   return (
     <>
     <header style={{width:'100vw', height:'100px', background:'black'}}></header>
     <main className="App">
-      <input type="search" name="searcher" id="" style={{width:'80%',maxWidth:'300px', paddind:'5px', margin:'0 auto'}} />
+      <UserSearcher/>
      {loading ? <p>...cargando</p> : error ? <p>{`${error}`}</p> : 
-     <div>
+     
       <UserCart/>
-     </div>
+     
      }
      {repos 
      ? <ReposCart/>
