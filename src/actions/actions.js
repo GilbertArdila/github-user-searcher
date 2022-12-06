@@ -1,5 +1,5 @@
 import {SET_USER,SET_REPOS,SET_LOADING,SET_ERROR} from '../types/types';
- import{getGitHubUser} from '../services/getData';
+ import{getGitHubUser,getRepos} from '../services/getData';
 
 
 export const setUser = (user) => async (dispatch) => {
