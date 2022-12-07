@@ -5,6 +5,9 @@ import { setUser,setRepos} from './actions/actions';
 import { ReposCart } from './containers/ReposCart';
 import {UserCart} from './containers/UserCart';
 import { UserSearcher } from './components';
+import { Spinner } from './components/Spinner';
+import { Header } from './containers/Header';
+import { Footer } from './containers/Footer';
 
 
 
@@ -63,7 +66,7 @@ function App() {
 
   return (
     <>
-    <header style={{width:'100vw', height:'100px', background:'black'}}></header>
+    <Header/>
     <main className="App">
 
     <UserSearcher 
@@ -72,7 +75,7 @@ function App() {
     searchedUser={searchedUser}
     />
 
-     {loading ? <p>...cargando</p> : error ? <p>{`${error}`}</p> 
+     {loading ? <Spinner/> : error ? <p>{`${error}`}</p> 
      :user !== undefined
      ?  <UserCart/>
      :<p>El usuario que buscas no existe</p>
@@ -83,13 +86,13 @@ function App() {
      }
      {user===undefined
      ?<p></p>
-     : !repos
-     ?<p>...cargando repos</p>
+     : !repos 
+     ?<p></p>
      :<ReposCart/>
      }
     
     </main>
-    <footer style={{width:'100vw', height:'60px', background:'black'}}></footer>
+   <Footer/>
     </>
     
   )
