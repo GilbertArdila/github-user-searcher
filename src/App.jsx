@@ -41,11 +41,8 @@ function App() {
   }, [user])
 
  
-
- 
- 
   const fetchUser = () => {
-    if(localUser !==''){
+    if(localUser !==null){
       dispatch(setUser(localUser))
     }else{
       //in the very first time it will show octocat
