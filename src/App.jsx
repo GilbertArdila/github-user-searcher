@@ -1,12 +1,9 @@
+import React from 'react';
 import {useEffect,useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import { setUser,setRepos} from './actions/actions';
 import { ReposCart } from './containers/ReposCart';
 import {UserCart} from './containers/UserCart';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
-import './styles/userSearcher.css';
 import { UserSearcher } from './components';
 
 
@@ -20,24 +17,43 @@ function App() {
   const dispatch = useDispatch();
 
   
-
+ 
+ 
   const [currentUser, setCurrentUser] = useState('octocat');
   const [searchedUser, setSearchedUser] = useState('');
 
+  //to set githubuser into localStorage
+  if(currentUser !== 'octocat'){
+    localStorage.setItem('githubuser',currentUser)
+  }
+  const localUser = localStorage.getItem('githubuser')
+  
+
+
+
   useEffect(() => {
-   fetchUser();
-   
-   setSearchedUser('')
+     fetchUser();
+     setSearchedUser('')
   }, [currentUser]);
 
   useEffect(() => {
   fetchRepos();
   }, [user])
-  
 
-  const fetchUser = async () => {
-    dispatch(setUser(currentUser))
+ 
+
+ 
+ 
+  const fetchUser = () => {
+    if(localUser !==''){
+      dispatch(setUser(localUser))
+    }else{
+      //in the very first time it will show octocat
+      dispatch(setUser(currentUser))
+     }
+    
   };
+ 
 
   const fetchRepos = async () => {
     if(user){
@@ -59,14 +75,22 @@ function App() {
     searchedUser={searchedUser}
     />
 
-     {loading ? <p>...cargando</p> : error ? <p>{`${error}`}</p> : 
+     {loading ? <p>...cargando</p> : error ? <p>{`${error}`}</p> 
+     :user !== undefined
+     ?  <UserCart/>
+     :<p>El usuario que buscas no existe</p>
      
-      <UserCart/>
+    
+     
      
      }
-     {repos 
-     ? <ReposCart/>
-     :<p>...cargando repos</p>}
+     {user===undefined
+     ?<p></p>
+     : !repos
+     ?<p>...cargando repos</p>
+     :<ReposCart/>
+     }
+    
     </main>
     <footer style={{width:'100vw', height:'60px', background:'black'}}></footer>
     </>
@@ -74,4 +98,4 @@ function App() {
   )
 }
 
-export default App
+export default(App)

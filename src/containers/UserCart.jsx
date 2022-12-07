@@ -8,15 +8,18 @@ const UserCart = () => {
 
     const user = useSelector(state => state.user);
     
+   
 
     return (
         <section className='UserCart'>
            
-            <Image 
+           <Image 
             url={user.avatar_url}
             name={user.name}
             />
             <InfoContainer/>
+           
+            
 
         </section>
     )

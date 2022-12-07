@@ -16,3 +16,8 @@
     margin-bottom: 10px;
     border-bottom: 1px dotted black;
 }
+.ReposCartContainer__cart p{
+    max-width:90%;
+    height: auto;
+    word-wrap: break-word;
+}

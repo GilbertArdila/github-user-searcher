@@ -9,6 +9,7 @@ html{
 body{
   font-size: 1.6rem;
   font-family: monospace,sans-serif;
+  overflow-x: hidden;
 }
 .App{
   width: 100vw;
