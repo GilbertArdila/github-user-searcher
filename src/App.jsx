@@ -1,9 +1,14 @@
 import {useEffect,useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import { setUser,setRepos} from './actions/actions';
-import { UserSearcher } from './components';
 import { ReposCart } from './containers/ReposCart';
 import {UserCart} from './containers/UserCart';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import './styles/userSearcher.css';
+import { UserSearcher } from './components';
+
 
 
 function App() {
@@ -17,10 +22,13 @@ function App() {
   
 
   const [currentUser, setCurrentUser] = useState('octocat');
+  const [searchedUser, setSearchedUser] = useState('');
 
   useEffect(() => {
    fetchUser();
-  }, [setUser]);
+   
+   setSearchedUser('')
+  }, [currentUser]);
 
   useEffect(() => {
   fetchRepos();
@@ -44,7 +52,13 @@ function App() {
     <>
     <header style={{width:'100vw', height:'100px', background:'black'}}></header>
     <main className="App">
-      <UserSearcher/>
+
+    <UserSearcher 
+    onClick={(e) => setCurrentUser(searchedUser)}
+    onChange={(e) => setSearchedUser(e.target.value)}
+    searchedUser={searchedUser}
+    />
+
      {loading ? <p>...cargando</p> : error ? <p>{`${error}`}</p> : 
      
       <UserCart/>
